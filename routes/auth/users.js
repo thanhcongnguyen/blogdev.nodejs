@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next){
-  UserRepository.find();
+  UserRepository.findById(1);
+  //UserRepository.createUser(1);
   res.send('login');
 });
 

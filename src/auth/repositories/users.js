@@ -2,16 +2,7 @@ let BaseRepository = require('../../common/baseRepository');
 
 class UserRepository extends BaseRepository{
     constructor(){
-        super();
-    }
-
-    updateUser(){
-
-    }
-
-    deleteUser(){
-
+        super('users');
     }
 }
-
-module.exports = UserRepository.getInstance('users');
+module.exports = UserRepository.getInstance();

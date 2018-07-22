@@ -13,11 +13,16 @@ class BaseRepository {
         this._model = db[model];
     }
 
-    static getInstance(model){
-        if(!BaseRepository._instance){
-            BaseRepository._instance = new BaseRepository(model);
-        }
-        return this._instance;
+    static getInstance(){
+        let key = (this).name;
+		if (!BaseRepository._instances) {
+			BaseRepository._instances = {};
+		}
+		if (!BaseRepository._instances[key]) {
+			this._instances[key] = new this();
+		}
+
+		return this._instances[key];
     }
 
 
@@ -48,8 +53,10 @@ class BaseRepository {
 
     }
 
-    findById(){
-
+    findById(id){
+        this._model.findById(id).then( result => {
+            console.log("result", result.dataValues);
+        });
     }
 
     delete(){
