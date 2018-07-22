@@ -5,10 +5,29 @@ class UserRepository extends BaseRepository{
         super('users');
     }
     
-    createUser(id){
+    findById(id, cb){
         this._model.findById(id).then(result => {
-            console.log("result", result);
-        });
+            if(result.dataValues != null){
+                return cb(null, result.dataValues);
+            }else{
+                cb(new Error('User ' + id + ' does not exist'));
+            }     
+        })
+        .catch(error => {
+                return cb(error);
+        })
+    }
+
+    findByUsername(username, cb){
+        this._model.find({where: { username: username} }).then(result => {
+            if(result.dataValues != null){
+                return cb(null, result.dataValues);
+            }
+                return cb(null, null);
+        })
+        .catch(error => {
+                return cb(error);
+        })
     }
 }
 module.exports = UserRepository.getInstance();
