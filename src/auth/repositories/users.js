@@ -1,9 +1,8 @@
 let BaseRepository = require('../../common/baseRepository');
-let db = require('../../../models/users');
 
 class UserRepository extends BaseRepository{
-    constructor(model){
-        super(model);
+    constructor(){
+        super();
     }
 
     updateUser(){
