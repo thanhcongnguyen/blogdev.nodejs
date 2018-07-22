@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var UserRepository = require('../../src/auth/repositories/users');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -7,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next){
+  UserRepository.find();
   res.send('login');
 });
 
