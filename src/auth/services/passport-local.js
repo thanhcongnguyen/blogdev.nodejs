@@ -6,6 +6,7 @@ var UserRepository = require('../repositories/users');
 passport.use(new Strategy(
     function(username, password, cb) {
         UserRepository.findByUsername(username, function(err, user) {
+        console.log(user);
         if (err) { return cb(err); }
         if (!user) { return cb(null, false); }
         if (user.password != password) { return cb(null, false); }

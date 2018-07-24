@@ -5,7 +5,7 @@ class UserRepository extends BaseRepository{
         super('users');
     }
     
-    findById(id, cb){
+    findUserById(id, cb){
         this._model.findById(id).then(result => {
             if(result.dataValues != null){
                 return cb(null, result.dataValues);
@@ -20,7 +20,7 @@ class UserRepository extends BaseRepository{
 
     findByUsername(username, cb){
         this._model.find({where: { username: username} }).then(result => {
-            if(result.dataValues != null){
+            if(result !== null){
                 return cb(null, result.dataValues);
             }
                 return cb(null, null);
@@ -28,6 +28,9 @@ class UserRepository extends BaseRepository{
         .catch(error => {
                 return cb(error);
         })
+    }
+
+    findById(username){
     }
 }
 module.exports = UserRepository.getInstance();
