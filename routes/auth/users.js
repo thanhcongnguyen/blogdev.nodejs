@@ -10,10 +10,9 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next){
   res.render('login')
 });
-router.post('/login', oauthServices.authenticate('local',{failureRedirect: '/users/faild'}),function(req, res, next){
+router.post('/login', oauthServices.authenticate('local',{ session: false }),function(req, res, next){
     console.log('Authentication Successful');
-    res.json({ username: req.user.username });
-    res.send('chao mung cac ban');
+    res.send({token: req.user});
 });
 
 

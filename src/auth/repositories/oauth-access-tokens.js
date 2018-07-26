@@ -19,4 +19,4 @@ class AccessTokenRepository extends BaseRepository {
     }
 }
 
-module.exports = AccessTokenRepository;
+module.exports = AccessTokenRepository.getInstance();

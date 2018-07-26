@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('oauth_access_tokens', [{
-      access_token: '$2b$10$DeZ337l9gOZqnSS2qStxbOXHlxy/QN8cgg0GwkRIDYMwFtjEzOgOC',
+      access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNvbmduZ3V5ZW4iLCJpYXQiOjE1MzI2Mzc4MDZ9.WAqVGtPM3I-9SJ1dkvzrD-bQBqrOQaQxuuuwJBCivuo',
       user_id: 1
     }], {});
   },
