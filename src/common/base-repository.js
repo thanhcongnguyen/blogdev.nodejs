@@ -55,7 +55,7 @@ class BaseRepository {
 
     findById(id){
         this._model.findById(id).then( result => {
-            console.log("result", result.dataValues);
+            if(result !== null) return result.dataValues;
         });
     }
 

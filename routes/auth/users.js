@@ -10,17 +10,18 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next){
   res.render('login')
 });
-router.post('/login', oauthServices.authenticate('local',{failureRedirect: '/users/logout', successRedirect: '/users'}),function(req, res, next){
+router.post('/login', oauthServices.authenticate('local',{failureRedirect: '/users/faild'}),function(req, res, next){
     console.log('Authentication Successful');
+    res.json({ username: req.user.username });
     res.send('chao mung cac ban');
 });
 
 
-router.get('/logout', function(req, res, next){
+router.get('/faild', function(req, res, next){
   res.send('logout');
 });
 
-router.post('/register', function(req, res, next){
+router.post('/register',oauthServices.authenticate('bearer', { session: false }), function(req, res, next){
   res.send('register');
 });
 

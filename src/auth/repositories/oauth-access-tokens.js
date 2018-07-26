@@ -2,19 +2,19 @@ let BaseRepository = require('../../common/base-repository');
 
 class AccessTokenRepository extends BaseRepository {
     constructor(){
-        super('');
+        super('oauth_access_tokens');
     }
 
-    findTokenById(id, cb){
-        this._model.findById(id).then(result => {
+    findByToken(token, done){
+        this._model.findOne({ where: { access_token: token } }).then(result => {
             if(result != null){
-                return cb(null, result.dataValues);
+                return done(null, result.dataValues);
             }else{
-                return cb(null, null);
+                return done(null, null);
             }
         })
         .catch(error => {
-            return cb(error);
+            return done(error);
         });
     }
 }
