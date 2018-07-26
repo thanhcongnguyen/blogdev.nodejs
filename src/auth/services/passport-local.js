@@ -1,9 +1,8 @@
-var express = require('express');
 var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
+var StrategyLocal = require('passport-local').Strategy;
 var UserRepository = require('../repositories/users');
 
-passport.use(new Strategy(
+passport.use(new StrategyLocal(
     function(username, password, cb) {
         UserRepository.findByUsername(username, function(err, user) {
         console.log(user);
@@ -24,6 +23,5 @@ passport.deserializeUser(function(id, cb) {
       cb(null, user);
     });
 });
-
 
 module.exports = passport;

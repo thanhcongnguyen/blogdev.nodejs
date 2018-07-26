@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('../../src/auth/services/users');
-var UserRepository= require('../../src/auth/repositories/users');
+var oauthServices = require('../../src/auth/services/oauth-services');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -11,10 +10,11 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next){
   res.render('login')
 });
-router.post('/login', passport.authenticate('local',{failureRedirect: '/users/logout', successRedirect: '/users'}),function(req, res, next){
+router.post('/login', oauthServices.authenticate('local',{failureRedirect: '/users/logout', successRedirect: '/users'}),function(req, res, next){
     console.log('Authentication Successful');
     res.send('chao mung cac ban');
 });
+
 
 router.get('/logout', function(req, res, next){
   res.send('logout');

@@ -1,4 +1,4 @@
-let BaseRepository = require('../../common/baseRepository');
+let BaseRepository = require('../../common/base-repository');
 
 class UserRepository extends BaseRepository{
     constructor(){
@@ -7,7 +7,7 @@ class UserRepository extends BaseRepository{
     
     findUserById(id, cb){
         this._model.findById(id).then(result => {
-            if(result.dataValues != null){
+            if(result != null){
                 return cb(null, result.dataValues);
             }else{
                 cb(new Error('User ' + id + ' does not exist'));
