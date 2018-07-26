@@ -14,9 +14,11 @@ passport.use(new LocalStrategy(
             if (!user) { return done(null, false); }
             let match = bcrypt.compareSync(password, user.password);
             if(match){
-                    let token = accessTokenRepository.findById(user.id);
-                    console.log('token', token);
-                    return done(null, token);
+                    // let token = accessTokenRepository.findById(user.id);
+                    // accessTokenRepository.findByToken()
+                    // console.log('token', token);
+                    console.log('login success');
+                    return done(null, user);
             }else{
                     console.log('faild');
                     return done(null, false);
