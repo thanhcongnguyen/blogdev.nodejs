@@ -11,8 +11,7 @@ router.get('/login', function(req, res, next){
   res.render('login')
 });
 router.post('/login', oauthServices.authenticate('local',{ session: false }),function(req, res, next){
-    console.log('Authentication Successful');
-    res.send({token: req.user});
+    res.send(req.user);
 });
 
 

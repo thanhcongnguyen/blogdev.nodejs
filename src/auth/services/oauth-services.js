@@ -14,6 +14,7 @@ passport.use(new LocalStrategy(
                         if (err) { return done(err); }
                         if (!user) { return done(null, false); }
                         let match = bcrypt.compareSync(password, user.password);
+                        var response = {};
                         if (match) {
                                 let myAccessToken = jwt.sign({ username, password, date: Date().now }, 'blogdev.vn');
                                 let myRefreshToken = jwt.sign({ username, password }, 'blogdev.vn');
@@ -33,18 +34,24 @@ passport.use(new LocalStrategy(
                                                         transaction: t
                                                 })
                                                 .then(result => {
-                                                        let data = result.dataValues;
+                                                        let data_token = result.dataValues;
+                                                        response.username = user.username;
+                                                        response.email = user.email;
+                                                        response.access_token = data_token.access_token;
                                                         return oauth_refresh_tokens.create({
                                                                 refresh_token: myRefreshToken,
-                                                                user_id: data.user_id,
-                                                                expires_at: data.expires_at
+                                                                user_id: data_token.user_id,
+                                                                expires_at: data_token.expires_at
                                                         },
                                                                 {
                                                                         transaction: t
                                                                 })
                                                 })
                                 }).then(result => {
-                                        return done(null, result);
+                                        let data_refresh_token = result.dataValues;
+                                        response.refresh_token = data_refresh_token.refresh_token;
+                                        response.expires_at = data_refresh_token.expires_at;
+                                        return done(null, response);
                                 }).catch(error => {
                                         return done(error);
                                 })
