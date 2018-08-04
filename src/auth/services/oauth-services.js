@@ -14,12 +14,11 @@ passport.use(new LocalStrategy(
             let match = bcrypt.compareSync(password, user.password);
             if(match){
                     let myJWT = jwt.sign({ username }, 'blogdev.vn');
-                    console.log('mytoken',myJWT );
-                    accessTokenRepository.findByToken(myJWT, function(err, token) {
-                        if (err) return done(err);
-                        if (!token) return done(null, false);
-                        return done(null, token);
-                    });
+                    accessTokenRepository.createToken(myJWT, user.id, 'all', function(err, token){
+                            if(err) done(err);
+                            if(!token) return done(null, false);
+                            return done(null, token);
+                    })
                     
             }else{
                     console.log('faild');
