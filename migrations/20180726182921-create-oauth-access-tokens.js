@@ -28,13 +28,15 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE
       },
-      created_at: {
+      createdAt: {
         allowNull: true,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'created_at'
       },
-      updated_at: {
+      updatedAt: {
         allowNull: true,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'updated_at'
       }
     });
   },
