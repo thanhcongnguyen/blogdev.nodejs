@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       access_token: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       user_id: {
         allowNull: false,

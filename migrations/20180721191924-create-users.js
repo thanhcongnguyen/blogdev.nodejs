@@ -10,12 +10,14 @@ module.exports = {
       },
       username: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       email: {
         allowNull: true,
         defaultValue: null,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       section: {
         type: Sequelize.STRING
