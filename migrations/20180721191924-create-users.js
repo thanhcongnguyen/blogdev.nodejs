@@ -50,14 +50,8 @@ module.exports = {
         allowNull: true,
         defaultValue: null
       },
-      createdAt: {
-        type: Sequelize.DATE,
-        field: 'created_at'
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        field: 'updated_at'
-      }
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE
     });
   },
   down: (queryInterface, Sequelize) => {

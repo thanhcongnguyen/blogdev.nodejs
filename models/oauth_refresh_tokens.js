@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     expires_at: DataTypes.DATE,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE
-  }, {});
+  }, {
+    timestamps: true,
+    tableName: 'oauth_refresh_tokens',
+    underscored: true
+  });
   oauth_refresh_tokens.associate = function(models) {
     // associations can be defined here
   };

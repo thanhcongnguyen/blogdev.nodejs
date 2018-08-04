@@ -12,8 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     verified_email_at: DataTypes.DATE,
     level: DataTypes.STRING,
     created_at: DataTypes.DATE,
-    updated_at: DataTypes.DATE 
-  }, {});
+    updated_at: DataTypes.DATE
+  }, {
+    timestamps: true,
+    tableName: 'users',
+    underscored: true
+  });
   users.associate = function(models) {
     // associations can be defined here
   };

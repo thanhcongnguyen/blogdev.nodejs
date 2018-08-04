@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       is_revoke: DataTypes.BOOLEAN,
       expires_at: DataTypes.DATE,
       created_at: DataTypes.DATE,
-      updated_at: DataTypes.DATE
-  }, {});
+      updated_at:DataTypes.DATE
+  }, {
+      timestamps: true,
+      tableName: 'oauth_access_tokens',
+      underscored: true
+  });
   oauth_access_tokens.associate = function(models) {
     // associations can be defined here
   };
