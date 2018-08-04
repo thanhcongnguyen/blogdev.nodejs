@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       refresh_token: {
-        type: Sequelize.CHAR(256),
+        type: Sequelize.STRING,
         unique: true
       },
       user_id: {

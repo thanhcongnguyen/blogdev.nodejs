@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       section: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING
       },
       state: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING
       },
       is_email_verified: {
         type: Sequelize.BOOLEAN,
@@ -33,7 +33,7 @@ module.exports = {
       },
       password: {
         allowNull: false,
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING
       },
       change_pass_at: {
         allowNull: true,
@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       level: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING,
         allowNull: true,
         defaultValue: null
       },

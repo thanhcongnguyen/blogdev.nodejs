@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       access_token: {
-        type: Sequelize.CHAR(256)
+        type: Sequelize.STRING
       },
       user_id: {
         allowNull: false,
