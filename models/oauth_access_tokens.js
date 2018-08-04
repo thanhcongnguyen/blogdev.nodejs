@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var oauth_access_tokens = sequelize.define('oauth_access_tokens', {
-      access_token: { type: sequelize.STRING, unique: true },
+      access_token: { type: DataTypes.STRING, unique: true },
       user_id: DataTypes.INTEGER,
       scope: DataTypes.BOOLEAN,
       is_revoke: DataTypes.BOOLEAN,

@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var users = sequelize.define('users', {
-    username: { type: sequelize.STRING, unique: true },
-    email: { type: sequelize.STRING, unique: true },
+    username: { type: DataTypes.STRING, unique: true },
+    email: { type: DataTypes.STRING, unique: true },
     section: DataTypes.STRING,
     state: DataTypes.STRING,
     is_email_verified: DataTypes.BOOLEAN,
