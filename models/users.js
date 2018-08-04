@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var users = sequelize.define('users', {
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
+    username: { type: sequelize.STRING, unique: true },
+    email: { type: sequelize.STRING, unique: true },
     section: DataTypes.STRING,
     state: DataTypes.STRING,
     is_email_verified: DataTypes.BOOLEAN,
@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     change_pass_at: DataTypes.DATE,
     verified_email_at: DataTypes.DATE,
     level: DataTypes.STRING,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE 
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE 
   }, {});
   users.associate = function(models) {
     // associations can be defined here

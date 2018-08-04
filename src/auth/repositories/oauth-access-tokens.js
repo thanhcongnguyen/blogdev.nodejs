@@ -14,7 +14,7 @@ class AccessTokenRepository extends BaseRepository {
                 if(data.expires_at < dateNow) return done(null, false);
                 return done(null, true);
             }else{
-                return done(null, null);
+                return done(null, false);
             }
         })
         .catch(error => {
