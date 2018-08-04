@@ -1,8 +1,27 @@
+var bcrypt = require('bcrypt');
 let BaseRepository = require('../../common/base-repository');
 
 class UserRepository extends BaseRepository{
     constructor(){
         super('users');
+    }
+
+    createUser(username, firstName, lastName, birthday, email, phone, address, password, done){
+        var hash_password = bcrypt.hashSync(password, 'blogdev.vn');
+        this._model.create({ 
+            username: username,
+            first_name: firstName,
+            last_name:  lastName,
+            birth_day: birthday,
+            email: email,
+            phone: phone,
+            address: address,
+            password: hash_password
+        }).then( result => {
+            if(result != null) return done(null, result);
+        }).catch( error => {
+            return done(error);
+        })
     }
     
     findUserById(id, done){

@@ -84,4 +84,8 @@ passport.use(new BearerStrategy(
         }
 ));
 
+function revokeToken(){
+        
+}
+
 module.exports = passport;
